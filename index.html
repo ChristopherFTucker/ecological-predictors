@@ -89,6 +89,20 @@
             font-family: Consolas, monospace;
         }
 
+        .download-button {
+            display: inline-block;
+            background: #245c46;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .download-button:hover {
+            background: #174632;
+        }
+
     </style>
 </head>
 
@@ -131,10 +145,13 @@
 
         <h3>Dataset</h3>
         <p>
-            The analysis uses a vegetation surveys dataset. This dataset contains various environmental measurements in Washington State parks, as well as a ecological health rank rating. The CSV download as well as its documentation will be linked below:
-            Download:________
-            Documentation:________
+            The analysis uses a vegetation surveys dataset. This dataset contains various environmental measurements in Washington State parks, as well as a ecological health rank rating. The CSV download will be linked below:
         </p>
+        <a href="PARKS_-_Vegetation_Surveys.csv"
+           download
+           class="download-button">
+            Download Dataset (CSV)
+        </a>
     </section>
 
     <section id="exploration">
@@ -152,9 +169,10 @@
             8. development status classifications
             9. size in acres
             My target variable was an ecological rank classification ranging from A - F. After checking for feature imbalance, I ended up combining ranks D - F into a D rank to create a more balanced dataset. I excluded outliers leaving myself with this these distributions:
-        <p>
-            *insert histograms*
-        </p>
+            
+        <img src="images/portfolioProjectOutliers.png"
+         alt="Predictor Variable Distributions"
+         width="700">
 
         <p>
             Then I used one-hot encoding to encode my categorical features. I used this method becuase though my features were ordinal, they did not have set ratio variations, and were therefore not fit for ordinal encoding. I used a min-max scalar to scale my data, and checked for correlation making sure no columns had a correlation greater than .85.
@@ -185,17 +203,17 @@
             The model had an accuracy score of .7598. The confusion matrix shows that the model had more success predicting the A and B class, while it struggled more with the lower classes. This is likely due to less data within these categories.
         </p>
 
-        <p>
-            *insert confusion matrix*
-        </p>
+        <img src="images/portfolioProjectConfusionMatrix.png"
+         alt="Model Results"
+         width="700">
 
         <p>
             It seems that exotic species coverage was the most predictive, with size, bare ground coverage, tree coverage, and shrub coverage also factoring in considerably.
         </p>
         
-        <p>
-            *insert feature importances*
-        </p>
+        <img src="images/featureImportances.png"
+         alt="Feature Importances"
+         width="700">
 
         <h3>Discussion</h3>
         <p>
