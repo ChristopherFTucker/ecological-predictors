@@ -4,53 +4,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>INFO 4604 Portfolio</title>
+    <title>Ecological Predictors | INFO 4604</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
             background: #f5f7fa;
             color: #243247;
-            max-width: 900px;
-            margin: 50px auto;
+            max-width: 950px;
+            margin: 40px auto;
             padding: 20px;
             line-height: 1.7;
         }
+
         header {
-            background: #17365d;
+            background: #245c46;
             color: white;
-            padding: 35px;
+            padding: 40px;
             border-radius: 12px;
         }
+
+        header h1 {
+            margin-bottom: 5px;
+        }
+
+        nav {
+            background: #e2ebe5;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        nav a {
+            margin-right: 25px;
+            color: #245c46;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
         section {
             background: white;
-            padding: 25px;
+            padding: 30px;
             margin-top: 20px;
             border-radius: 12px;
         }
-        a { color: #2870b9; }
+
+        h2 {
+            color: #245c46;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #245c46;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #687786;
+        }
     </style>
 </head>
+
 <body>
+
     <header>
-        <h1>Machine Learning Portfolio</h1>
-        <p>Ecological Predictors Research Project</p>
+        <h1>Ecological Predictors</h1>
+        <p>
+            Exploring ecological health in Washington
+            State Parks using Machine Learning
+        </p>
+        <p>INFO 4604 | Portfolio Project 1</p>
     </header>
 
-    <section>
+    <nav>
+        <a href="#overview">Overview</a>
+        <a href="#exploration">Data Exploration</a>
+        <a href="#methods">Methods</a>
+        <a href="#results">Results</a>
+    </nav>
+
+    <section id="overview">
         <h2>Project Overview</h2>
-        <p>This project uses open data to assess the predictive power of ecological components in regards to ecosystem health ratings.</p>
+
+        <p>
+            This project uses open data from Washington
+            State's geospatial data program to analyze
+            connections between ecological health
+            within state parks and relevant
+            predictive factors.
+        </p>
+
+        <h3>Research Question</h3>
+        <p>
+            Which environmental and ecological
+            characteristics are most useful for
+            predicting vegetation conditions
+            in Washington State Parks?
+        </p>
+
+        <h3>Dataset</h3>
+        <p>
+            The analysis uses the Parks Vegetation
+            Surveys dataset.
+        </p>
     </section>
 
-    <section>
+    <section id="exploration">
         <h2>Data Exploration</h2>
-        <p>Here I will explain how I cleaned and
-        prepared my dataset.</p>
+
+        <p>
+            Before developing a machine learning
+            model, I explored the dataset to identify
+            missing values, outliers, and relationships
+            between features.
+        </p>
+
+        <h3>Feature Distributions</h3>
+        <p>
+            Histograms help visualize how individual
+            variables are distributed.
+        </p>
+
+        <!-- Add your histogram image here later -->
+
+        <h3>Missing Values and Data Cleaning</h3>
+        <p>
+            This section will describe the steps
+            taken to prepare the dataset for modeling.
+        </p>
+
+        <h3>Feature Correlations</h3>
+        <p>
+            Correlation analysis helps identify
+            relationships between numerical features.
+        </p>
+    </section>
+
+    <section id="methods">
+        <h2>Machine Learning Methods</h2>
+
+        <h3>Clustering</h3>
+        <p>
+            This section will explain the clustering
+            analysis conducted without the target
+            variable.
+        </p>
+
+        <h3>Model Development</h3>
+        <p>
+            This section will describe the selected
+            machine learning algorithm and the
+            training and testing process.
+        </p>
+    </section>
+
+    <section id="results">
+        <h2>Results and Conclusions</h2>
+
+        <h3>Model Performance</h3>
+        <p>
+            This section will present the model's
+            performance on the test dataset.
+        </p>
+
+        <h3>Key Findings</h3>
+        <p>
+            This section will summarize the most
+            important findings and limitations.
+        </p>
     </section>
 
     <section>
-        <h2>Model Results</h2>
-        <p>Here I will display my machine learning
-        results and visualizations.</p>
+        <h2>Python Code</h2>
+
+        <p>
+            The complete Python analysis is available
+            in the GitHub repository.
+        </p>
+
+        <a class="button"
+           href="https://github.com/ChristopherFTucker/ecological-predictors">
+            View Project on GitHub
+        </a>
     </section>
+
+    <footer>
+        <p>INFO 4604 | Ecological Predictors</p>
+    </footer>
+
 </body>
 </html>
+
