@@ -74,6 +74,21 @@
             margin-top: 30px;
             color: #687786;
         }
+        
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        code {
+            font-family: Consolas, monospace;
+        }
+
     </style>
 </head>
 
@@ -116,8 +131,9 @@
 
         <h3>Dataset</h3>
         <p>
-            The analysis uses the Parks Vegetation
-            Surveys dataset.
+            The analysis uses a vegetation surveys dataset. This dataset contains various environmental measurements in Washington State parks, as well as a ecological health rank rating. The CSV download as well as its documentation will be linked below:
+            Download:________
+            Documentation:________
         </p>
     </section>
 
@@ -125,49 +141,40 @@
         <h2>Data Exploration</h2>
 
         <p>
-            Before developing a machine learning
-            model, I explored the dataset to identify
-            missing values, outliers, and relationships
-            between features.
+            I originally identified 13 potential predictors from the dataset, which later turned into 9 due to incomplete/unformatted entries is certain columns. These turned out to be:
+            1. % tree coverage
+            2. % shrub coverage
+            3. % water coverage
+            4. Wildlife inhabitance classifications
+            5. Livestock usage classifications
+            6. % exotic plant species coverage
+            7. % bare ground coverage
+            8. development status classifications
+            9. size in acres
+            My target variable was an ecological rank classification ranging from A - F. After checking for feature imbalance, I ended up combining ranks D - F into a D rank to create a more balanced dataset. I excluded outliers leaving myself with this these distributions:
+        <p>
+            *insert histograms*
         </p>
 
-        <h3>Feature Distributions</h3>
         <p>
-            Histograms help visualize how individual
-            variables are distributed.
-        </p>
-
-        <!-- Add your histogram image here later -->
-
-        <h3>Missing Values and Data Cleaning</h3>
-        <p>
-            This section will describe the steps
-            taken to prepare the dataset for modeling.
-        </p>
-
-        <h3>Feature Correlations</h3>
-        <p>
-            Correlation analysis helps identify
-            relationships between numerical features.
+            Then I used one-hot encoding to encode my categorical features. I used this method becuase though my features were ordinal, they did not have set ratio variations, and were therefore not fit for ordinal encoding. I used a min-max scalar to scale my data, and checked for correlation making sure no columns had a correlation greater than .85.
         </p>
     </section>
 
     <section id="methods">
-        <h2>Machine Learning Methods</h2>
-
-        <h3>Clustering</h3>
+        <h2>Model Development</h2>
+        
         <p>
-            This section will explain the clustering
-            analysis conducted without the target
-            variable.
+            I used an 80-20 train-test split. Then I trained a random forest model with 42 decision trees.
         </p>
 
-        <h3>Model Development</h3>
-        <p>
-            This section will describe the selected
-            machine learning algorithm and the
-            training and testing process.
-        </p>
+        <pre><code class="language-python">
+        xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.2, stratify=y)
+        model = RandomForestClassifier(n_estimators=42)
+        model.fit(xTrain, yTrain)
+        yPred = model.predict(xTest)
+        print(accuracy_score(yTest, yPred))
+        </code></pre>
     </section>
 
     <section id="results">
@@ -175,14 +182,24 @@
 
         <h3>Model Performance</h3>
         <p>
-            This section will present the model's
-            performance on the test dataset.
+            The model had an accuracy score of .7598. The confusion matrix shows that the model had more success predicting the A and B class, while it struggled more with the lower classes. This is likely due to less data within these categories.
         </p>
 
-        <h3>Key Findings</h3>
         <p>
-            This section will summarize the most
-            important findings and limitations.
+            *insert confusion matrix*
+        </p>
+
+        <p>
+            It seems that exotic species coverage was the most predictive, with size, bare ground coverage, tree coverage, and shrub coverage also factoring in considerably.
+        </p>
+        
+        <p>
+            *insert feature importances*
+        </p>
+
+        <h3>Discussion</h3>
+        <p>
+            Though this model examines a small subset of ecological predictors, and only looks at one vegetation survey rank, its methodology could be applied to a wide array of predictors and rankings. These results identified exotic species, amongst other factors, as a very strong indicator of ecosystem health.
         </p>
     </section>
 
@@ -190,8 +207,7 @@
         <h2>Python Code</h2>
 
         <p>
-            The complete Python analysis is available
-            in the GitHub repository.
+            The complete, annotated notebook is viewable here.
         </p>
 
         <a class="button"
@@ -201,7 +217,7 @@
     </section>
 
     <footer>
-        <p>INFO 4604 | Ecological Predictors</p>
+        <p>INFO 4604 | Ecological Predictor Project</p>
     </footer>
 
 </body>
